@@ -1,0 +1,97 @@
+<!-- HTML Structure -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Meta tags for character set and viewport -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Title and linking to an external stylesheet -->
+  <title>Book Library</title>
+  <link rel="stylesheet" type="text/css" href="/styles/style.css">
+</head>
+<body>
+  <!-- Header -->
+  <h1>Book Library</h1>
+
+  <!-- Search bar -->
+  <input type="text" placeholder="Search.." onkeyup="search()" id="searchBar">
+
+  <!-- Dropdown for sorting options -->
+  <div class="dropdown">
+    <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+    <div id="myDropdown" class="dropdown-content">
+      <button onclick="sort(2)">Filter by Genre from A to Z</button>
+      <button onclick="backSort(2)">Filter by Genre from Z to A</button>
+      <button onclick="sort(3)">Filter from earliest to latest Year</button>
+      <button onclick="backSort(3)">Filter from latest to earliest Year</button>
+    </div>
+  </div>
+
+  <!-- Book Dashboard -->
+  <table id="bookTable">
+    <!-- Table headers -->
+    <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Genre</th>
+      <th>Publication Year</th>
+      <th>Action</th>
+    </tr>
+  </table>
+
+  <!-- Add Book Form -->
+  <table>
+    <form id="addBookForm">
+      <h3>Add Book</h3>
+      <!-- Form fields for adding a new book -->
+      <label for="title">Title:</label>
+      <input type="text" id="title" required>
+
+      <label for="author">Author:</label>
+      <input type="text" id="author" required>
+
+      <label for="genre">Genre:</label>
+      <input type="text" id="genre" required>
+
+      <label for="publicationYear">Publication Year:</label>
+      <input type="number" id="publicationYear" required>
+
+      <label for="synopsis">Synopsis:</label>
+      <textarea id="synopsis" rows="1"></textarea>
+
+      <!-- Button to add a new book -->
+      <button type="button" onclick="addBook()">Add Book</button>
+    </form>
+  </table>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+
+  <!-- Edit Book Dialog -->
+  <dialog id="editDialog">
+    <h2>Edit Book</h2>
+    <form id="editBookForm">
+      <!-- Form fields for editing a book -->
+      <label for="editTitle">Title:</label>
+      <input type="text" id="editTitle" required>
+
+      <label for="editAuthor">Author:</label>
+      <input type="text" id="editAuthor" required>
+
+      <label for="editGenre">Genre:</label>
+      <input type="text" id="editGenre" required>
+
+      <label for="editPublicationYear">Publication Year:</label>
+      <input type="number" id="editPublicationYear" required>
+
+      <label for="editSynopsis">Synopsis:</label>
+      <textarea id="editSynopsis" rows="4"></textarea>
+
+      <!-- Buttons for applying changes and canceling -->
+      <button type="button" class="save">Apply Changes</button>
+      <button type="button" id="cancel" onclick="closeDialog()">Cancel</button>
+    </form>
+  </dialog>
+
+</body>
+</html>

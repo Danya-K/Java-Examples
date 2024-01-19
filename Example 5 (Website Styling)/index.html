@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shopping Page</title>
+<style>
+/* Add your CSS styles here */
+
+.product {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
+  text-align: center; 
+}
+
+.product h2 {
+  color: #333; 
+}
+
+.product img {
+  max-width: 100%; 
+  height: auto; 
+  border-radius: 5px; 
+}
+
+.product p {
+  color: #666; 
+  margin-bottom: 8px; 
+}
+
+.product p.price {
+  font-weight: bold; 
+  color: #ff2f00; 
+}
+
+</style>
+</head>
+<body>
+<div id="product-container">
+<!-- Products will be added here by JavaScript -->
+</div>
+<script>
+fetch('https://fakestoreapi.com/products')
+.then(response => {
+if (!response.ok) {
+throw new Error('Network response was not ok');
+}
+return response.json();
+})
+.then(products => {
+const container = document.getElementById('product-container');
+products.forEach(product => {
+const productDiv = document.createElement('div');
+productDiv.className = 'product';
+productDiv.innerHTML = `
+<h2>${product.title}</h2>
+<img src="${product.image}" alt="${product.title}" style="width:100px;
+height:auto;">
+<p>${product.description}</p>
+<p>Price: $${product.price}</p>
+`;
+container.appendChild(productDiv);
+});
+})
+.catch(error => {
+console.error('There has been a problem with your fetch operation:', error);
+});
+</script>
+</body>
+</html>
+To read more about this specific API and to see more examples go to:
+https://fakestoreapi.com/docs
